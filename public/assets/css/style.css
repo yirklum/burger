@@ -1,0 +1,53 @@
+body {
+    background-image: url("../images/bobs-burgers-background.jpeg");
+    background-repeat: repeat-y;
+    font-family: 'Fredoka One', cursive;
+    
+}
+
+.undevoured-burgers {
+    margin-top: 100px;
+}
+
+.devoured-burgers {
+    margin-top: 155px;
+}
+
+.add-burger {
+    /* display: inline-block; */
+    margin-top: 250px;
+    background-color:hsla(193, 26%, 7%, 0.3);
+    color: white;
+    height: 200px;
+}
+
+h1 {
+    padding: 15px;
+    color: red;
+    font-size: 55px;
+    background-color: hsla(0, 0%, 0%, 0.3);
+    width: 400px;
+    margin-top: 25px;
+}
+
+.burger {
+    background-color: rgba(253, 253, 253, 0.800);
+    padding: 5px;
+    margin-top: 15px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.yellow {
+    background-color: rgba(240, 243, 49, 0.8);
+    text-align: center;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: rgba(240, 42, 42, 0.8);
+    color: white;
+}

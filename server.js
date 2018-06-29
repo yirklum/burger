@@ -1,21 +1,35 @@
+// Require dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
 
+var methodOverride = require("method-override");
 
+// Set up port
+var PORT = process.env.PORT || 8080;
 
-var orm = require("./config/orm.js");
+var app = express();
 
-// For each of the following select methods, a string argument containing wildcard character ("*")
-// could work in most environments, but some MySQL servers (like MAMP) will return an error.
+// Make static content visible
+app.use(express.static(__dirname + "/public"));
 
-// // Console log all the party_name's.
-// orm.select("party_name", "parties");
+// Set up parser
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-// // Console log all the client_name's.
-// orm.select("client_name", "clients");
+// Use override
+app.use(methodOverride("_method"));
 
-// // Console log all the parties that have a party-type of grown-up.
-// orm.selectWhere("parties", "party_type", "grown-up");
+// Set up handlebars
+var exphbs = require("express-handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-// // Console log all the clients and their parties.
-// orm.leftJoin(["client_name", "party_name"], "clients", "parties", "id", "client_id");
+// Import routes
+var routes = require("./controllers/burgers_controller.js");
+app.use("/", routes);
+
+// Start server listening
+app.listen(PORT, function() {
+  console.log("Server listening on: http://localhost:" + PORT);
+});
+
